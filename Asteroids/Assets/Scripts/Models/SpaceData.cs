@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Avramov.Asteroids
 {
-    public class SpaceModel
+    public class SpaceData
     {
         private float _width;
         private float _height;
@@ -13,9 +13,9 @@ namespace Avramov.Asteroids
         private float _borderLeft;
         private float _borderRight;
 
-        private List<SpaceObject> _spaceObjects = new List<SpaceObject>();
+        //private List<SpaceObject> _spaceObjects = new List<SpaceObject>();
 
-        public SpaceModel(float spaceWidth, float spaceHeight)
+        public SpaceData(float spaceWidth, float spaceHeight)
         {
             _width = spaceWidth;
             _height = spaceHeight;
@@ -26,23 +26,23 @@ namespace Avramov.Asteroids
             _borderRight = spaceWidth * 0.5f;
         }
 
-        public void AddObjectToSpace(SpaceObject spaceObject)
-        {
-            _spaceObjects.Add(spaceObject);
-        }
+        //public void AddObjectToSpace(SpaceObject spaceObject)
+        //{
+        //    _spaceObjects.Add(spaceObject);
+        //}
 
-        public void RemoveObjectFromSpace(SpaceObject spaceObject)
-        {
-            _spaceObjects.Remove(spaceObject);
-        }
+        //public void RemoveObjectFromSpace(SpaceObject spaceObject)
+        //{
+        //    _spaceObjects.Remove(spaceObject);
+        //}
 
-        public void MoveSpaceObjects()
-        {
-            foreach (var item in _spaceObjects)
-            {
-                item.Move();
-            }
-        }
+        //public void MoveSpaceObjects()
+        //{
+        //    for (int i = 0; i < _spaceObjects.Count; i++)
+        //    {
+        //        _spaceObjects[i].Move();
+        //    }
+        //}
 
         public Vector2 ApplyBorders(Vector2 targetPosition)
         {

@@ -17,3 +17,6 @@ MonoBehaviour:
   <AsteroidsSpawnRate>k__BackingField: 10
   <ShipSettings>k__BackingField: {fileID: 11400000, guid: 4a5d89dc6b5a80d4a9ca27997ad6aed6, type: 2}
   <AsteroidSettings>k__BackingField: {fileID: 11400000, guid: 4809686648c04ab459b883828f58e026, type: 2}
+  <BulletSettings>k__BackingField: {fileID: 11400000, guid: c959706ae73aedf4d958f763ce3e4fe7, type: 2}
+  <MeteorsSettings>k__BackingField: {fileID: 11400000, guid: ed8900176a1c7f548bb5e156186b7c04, type: 2}
+  <AlienSettings>k__BackingField: {fileID: 11400000, guid: 1cd3dc346178991438499a2a501bd60d, type: 2}

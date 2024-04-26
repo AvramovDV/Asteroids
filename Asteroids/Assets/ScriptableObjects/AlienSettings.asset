@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70d2e67ac9e26e94f94314f176e26536, type: 3}
-  m_Name: AsteroidSettings
+  m_Script: {fileID: 11500000, guid: 5db292c6796c7584faae7fcb7781ffd3, type: 3}
+  m_Name: AlienSettings
   m_EditorClassIdentifier: 
-  <Speed>k__BackingField: 1.5
-  <Points>k__BackingField: 10
+  <Speed>k__BackingField: 1
+  <Points>k__BackingField: 25

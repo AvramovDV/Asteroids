@@ -1,47 +1,51 @@
-using System.Diagnostics;
-
 namespace Avramov.Asteroids
 {
     public class GameLoopState : BaseState
     {
         private GameModel _gameModel;
-        private ShipPresenter _shipPresenter;
         private AsteroidsControl _asteroidsControl;
-        private AsteroidsPresenter _asteroidsPresenter;
+        private HUDPresenter _hudPresenter;
+        private SpaceObjectsPresenter _spaceObjectsPresenter;
 
         private Assets _assets;
+        private HUD _hud;
 
-        public GameLoopState(GameModel gameModel, AsteroidsControl asteroidsControl, Assets assets)
+        public GameLoopState(GameModel gameModel, AsteroidsControl asteroidsControl, Assets assets, HUD hud)
         {
             _gameModel = gameModel;
             _asteroidsControl = asteroidsControl;
             _assets = assets;
+            _hud = hud;
         }
 
         public override void StartState()
         {
-            _shipPresenter = new ShipPresenter(_gameModel.ShipModel, (SpaceShipView)_assets.ShipView);
-            _asteroidsPresenter = new AsteroidsPresenter(_gameModel.Asteroids, _assets.AsteroidView);
+            _hudPresenter = new HUDPresenter(_hud, _gameModel);
+            _spaceObjectsPresenter = new SpaceObjectsPresenter(_gameModel, _assets);
+            _spaceObjectsPresenter.Initialize();
             _gameModel.GameEndEvent += OnGameEnd;
+            _gameModel.Start();
         }
 
         public override void UpdateState()
         {
             ListenInput();
             _gameModel?.Simulate();
-            _shipPresenter?.Update();
-            _asteroidsPresenter?.Update();
+            _hudPresenter.Update();
         }
 
         public override void EndState()
         {
             _gameModel.GameEndEvent -= OnGameEnd;
+            _spaceObjectsPresenter.Dispose();
+            _hudPresenter?.Dispose();
         }
 
         private void ListenInput()
         {
             _gameModel.MoveShip(_asteroidsControl.DefaultActionMap.Acceleration.IsPressed());
             _gameModel.RotateShip(_asteroidsControl.DefaultActionMap.Rotation.ReadValue<float>());
+            if (_asteroidsControl.DefaultActionMap.FireBullet.WasPressedThisFrame()) _gameModel.ShootBullets();
         }
 
         private void OnGameEnd()

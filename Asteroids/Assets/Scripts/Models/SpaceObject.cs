@@ -3,31 +3,42 @@ using UnityEngine;
 
 namespace Avramov.Asteroids
 {
-    public class SpaceObject
+    public abstract class SpaceObject
     {
         public event Action CollideEvent;
+        public event Action<SpaceObject> DestroyEvent;
+        public event Action UpdateEvent;
 
         public Vector2 Position { get; protected set; }
         public float Angle { get; protected set; }
-        public float Size { get; private set; }
         public Vector2 Velocity { get; protected set; }
 
-        private SpaceModel _space;
+        private SpaceData _space;
 
-        public SpaceObject(SpaceModel space)
+        public SpaceObject(SpaceData space, Vector2 position = default, float angle = 0f, float speed = 0f)
         {
+            Position = position;
+            Angle = angle;
+            Velocity = Vector2.up.Rotate(Angle) * speed;
             _space = space;
-            _space.AddObjectToSpace(this);
         }
+
+        public abstract SpaceObjectType SpaceObjectType { get; }
 
         public void Move()
         {
             Vector2 targetPosition = Velocity * Time.deltaTime + Position;
             targetPosition = _space.ApplyBorders(targetPosition);
             Position = targetPosition;
+            UpdateEvent?.Invoke();
         }
 
         public void Collide() => CollideEvent?.Invoke();
+
+        public void Destroy()
+        {
+            DestroyEvent?.Invoke(this);
+        }
     }
 }
 

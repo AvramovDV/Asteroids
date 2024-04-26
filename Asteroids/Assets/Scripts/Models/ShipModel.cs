@@ -7,14 +7,12 @@ namespace Avramov.Asteroids
         private SpaceShipSettings _settigns;
         public bool IsMoving { get; private set; } = false;
 
-        public ShipModel(SpaceShipSettings spaceShipSettings, SpaceModel space) : base(space)
+        public override SpaceObjectType SpaceObjectType => SpaceObjectType.Ship;
+
+        public ShipModel(SpaceShipSettings spaceShipSettings, SpaceData space) : base(space)
         {
             _settigns = spaceShipSettings;
-        }
-
-        public void Simulate()
-        {
-            SetupVelocity();
+            UpdateEvent += SetupVelocity;
         }
 
         public void MoveShip(bool value) => IsMoving = value;

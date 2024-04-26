@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a329c2bdac5d144ab75edeea2320183, type: 3}
   m_Name: Assets
   m_EditorClassIdentifier: 
-  <ShipView>k__BackingField: {fileID: 8834300670988051225, guid: c26afe7360b0af245a805362fd6c999d, type: 3}
-  <AsteroidView>k__BackingField: {fileID: 1175604466315593296, guid: 54adc9beccff198489c5fb7900b2bd5f, type: 3}
-  <MeteorView>k__BackingField: {fileID: 8663750425955602651, guid: 4a03977051f2fed479c8f81b11723cf0, type: 3}
-  <BulletView>k__BackingField: {fileID: 8014241889093464535, guid: 50f57f0f10c116540a88f6ec6dcc1b7d, type: 3}
+  _spaceObjects:
+  - <SpaceObjectType>k__BackingField: 1
+    <Prefab>k__BackingField: {fileID: 8834300670988051225, guid: c26afe7360b0af245a805362fd6c999d, type: 3}
+  - <SpaceObjectType>k__BackingField: 2
+    <Prefab>k__BackingField: {fileID: 1175604466315593296, guid: 54adc9beccff198489c5fb7900b2bd5f, type: 3}
+  - <SpaceObjectType>k__BackingField: 3
+    <Prefab>k__BackingField: {fileID: 8663750425955602651, guid: 4a03977051f2fed479c8f81b11723cf0, type: 3}
+  - <SpaceObjectType>k__BackingField: 4
+    <Prefab>k__BackingField: {fileID: 8969356652697767702, guid: 50f57f0f10c116540a88f6ec6dcc1b7d, type: 3}
+  - <SpaceObjectType>k__BackingField: 5
+    <Prefab>k__BackingField: {fileID: -7849838961516033280, guid: 9141201d6f239df4e851a8cb47352a4e, type: 3}

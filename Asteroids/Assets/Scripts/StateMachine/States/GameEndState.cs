@@ -17,7 +17,7 @@ namespace Avramov.Asteroids
 
         public override void StartState()
         {
-            _gameOverScreen.CountText.text = $"{456}";
+            _gameOverScreen.CountText.text = $"{_gameModel.Points}";
             _gameOverScreen.RestartButton.onClick.AddListener(Restart);
             _gameOverScreen.gameObject.SetActive(true);
         }
@@ -26,13 +26,14 @@ namespace Avramov.Asteroids
 
         public override void EndState()
         {
+            _gameModel.Dispose();
             _gameOverScreen.RestartButton.onClick.RemoveListener(Restart);
             _gameOverScreen.gameObject.SetActive(false);
         }
 
         private void Restart()
         {
-
+            SwitchState<BootstrapState>();
         }
     }
 }

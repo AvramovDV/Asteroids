@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Avramov.Asteroids
 {
-[CreateAssetMenu(fileName = "AsteroidSettings", menuName = "Asteroids/AsteroidSettings")]
-    public class AsteroidSettings : ScriptableObject
+[CreateAssetMenu(fileName = "AlienSettings", menuName = "Asteroids/AlienSettings")]
+    public class AlienSettings : ScriptableObject
     {
         [field: SerializeField] public float Speed { get; private set; }
         [field: SerializeField] public int Points { get; private set; }

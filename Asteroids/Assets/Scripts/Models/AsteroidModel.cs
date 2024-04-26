@@ -4,11 +4,22 @@ namespace Avramov.Asteroids
 {
     public class AsteroidModel : SpaceObject
     {
-        public AsteroidModel(Vector2 position, AsteroidSettings settings, SpaceModel space) : base(space)
+        public override SpaceObjectType SpaceObjectType => SpaceObjectType.Asteroid;
+
+        public AsteroidModel(SpaceData space, Vector2 position = default, float angle = 0, float speed = 0) : base(space, position, angle, speed)
         {
-            Position = position;
-            Angle = Random.Range(0f, 360f);
-            Velocity = Vector2.up.Rotate(Angle) * settings.Speed;
+            CollideEvent += OnCollided;
+            DestroyEvent += OnDestroy;
+        }
+
+        private void OnCollided()
+        {
+            Destroy();
+        }
+
+        private void OnDestroy(SpaceObject spaceObject)
+        {
+            //TODO: Spawn meteors
         }
     }
 }
