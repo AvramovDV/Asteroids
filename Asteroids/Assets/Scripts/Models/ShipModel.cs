@@ -5,9 +5,9 @@ namespace Avramov.Asteroids
     public class ShipModel : SpaceObject
     {
         private SpaceShipSettings _settigns;
-        private bool _isMoving = false;
+        public bool IsMoving { get; private set; } = false;
 
-        public ShipModel(SpaceShipSettings spaceShipSettings)
+        public ShipModel(SpaceShipSettings spaceShipSettings, SpaceModel space) : base(space)
         {
             _settigns = spaceShipSettings;
         }
@@ -17,21 +17,20 @@ namespace Avramov.Asteroids
             SetupVelocity();
         }
 
-        public void MoveShip() => _isMoving = true;
+        public void MoveShip(bool value) => IsMoving = value;
 
         public void RotateShip(float value)
         {
             float target = Angle + value * _settigns.RotationSpeed * Time.deltaTime;
-            SetupAngle(target);
+            Angle = target;
         }
 
         private void SetupVelocity()
         {
-            float acceleration = _isMoving ? _settigns.Acceleration : _settigns.Deceleration;
-            Vector2 target = _isMoving ? Vector2.up.Rotate(Angle) * _settigns.MaxSpeed : Vector2.zero;
+            float acceleration = IsMoving ? _settigns.Acceleration : _settigns.Deceleration;
+            Vector2 target = IsMoving ? Vector2.up.Rotate(Angle) * _settigns.MaxSpeed : Vector2.zero;
             target = Vector2.MoveTowards(Velocity, target, acceleration * Time.deltaTime);
-            SetupVelocity(target);
-            _isMoving = false;
+            Velocity = target;
         }
     }
 }

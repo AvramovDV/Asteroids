@@ -40,18 +40,11 @@ namespace Avramov.Asteroids
         {
             foreach (var item in _spaceObjects)
             {
-                MoveSpaceObject(item);
+                item.Move();
             }
         }
 
-        private void MoveSpaceObject(SpaceObject spaceObject)
-        {
-            Vector2 targetPosition = spaceObject.Velocity * Time.deltaTime + spaceObject.Position;
-            targetPosition = ApplyBorders(targetPosition);
-            spaceObject.MoveTo(targetPosition);
-        }
-
-        private Vector2 ApplyBorders(Vector2 targetPosition)
+        public Vector2 ApplyBorders(Vector2 targetPosition)
         {
             float xCorrection = targetPosition.x > _borderRight ? -_width : targetPosition.x < _borderLeft ? _width : 0f;
             float yCorrection = targetPosition.y > _borderUp ? -_height : targetPosition.y < _borderDown ? _height : 0f;

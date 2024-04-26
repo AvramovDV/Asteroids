@@ -5,7 +5,8 @@ namespace Avramov.Asteroids
     public class Bootstrap : MonoBehaviour
     {
         [SerializeField] private GameSettings _gameSettings;
-        [SerializeField] private SpaceShipView _shipView;
+        [SerializeField] private Assets _assets;
+        [SerializeField] private GameOverScreen _gameOverScreen;
 
         private AsteroidsControl _control;
         private GameModel _gameModel;
@@ -45,8 +46,8 @@ namespace Avramov.Asteroids
             _gameState = new BaseStateMachine();
 
             _gameState.AddState(new BootstrapState(_gameModel, _gameSettings));
-            _gameState.AddState(new GameLoopState(_gameModel, _shipView, _control));
-            _gameState.AddState(new GameEndState());
+            _gameState.AddState(new GameLoopState(_gameModel, _control, _assets));
+            _gameState.AddState(new GameEndState(_gameOverScreen, _gameModel));
 
             _gameState.SwitchToState<BootstrapState>();
         }

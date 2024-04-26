@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Avramov.Asteroids
 {
-    public class SpaceShipView : MonoBehaviour
+    public class SpaceShipView : SpaceObjectView
     {
-        
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            collision.GetComponent<SpaceObjectView>()?.Collide();
+            Collide();
+        }
     }
 }
 

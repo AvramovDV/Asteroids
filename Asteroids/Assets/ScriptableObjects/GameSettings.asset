@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <GameFieldHeight>k__BackingField: 10
   <GameFieldWidth>k__BackingField: 17.777779
+  <AsteroidsSpawnRate>k__BackingField: 10
   <ShipSettings>k__BackingField: {fileID: 11400000, guid: 4a5d89dc6b5a80d4a9ca27997ad6aed6, type: 2}
+  <AsteroidSettings>k__BackingField: {fileID: 11400000, guid: 4809686648c04ab459b883828f58e026, type: 2}
