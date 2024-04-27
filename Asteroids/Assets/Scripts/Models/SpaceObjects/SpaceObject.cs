@@ -5,13 +5,14 @@ namespace Avramov.Asteroids
 {
     public abstract class SpaceObject
     {
-        public event Action CollideEvent;
+        public event Action<SpaceObject> CollideEvent;
         public event Action<SpaceObject> DestroyEvent;
         public event Action UpdateEvent;
 
         public Vector2 Position { get; protected set; }
         public float Angle { get; protected set; }
         public Vector2 Velocity { get; protected set; }
+        public Vector2 Direction => Vector2.up.Rotate(Angle);
 
         private SpaceData _space;
 
@@ -33,7 +34,7 @@ namespace Avramov.Asteroids
             UpdateEvent?.Invoke();
         }
 
-        public void Collide() => CollideEvent?.Invoke();
+        public void Collide() => CollideEvent?.Invoke(this);
 
         public void Destroy()
         {

@@ -39,18 +39,17 @@ namespace Avramov.Asteroids
 
         private void SetupModels()
         {
-            _gameModel = new GameModel();
+            _gameModel = new GameModel(_gameSettings);
         }
 
         private void SetupGameStateMachine()
         {
             _gameState = new BaseStateMachine();
 
-            _gameState.AddState(new BootstrapState(_gameModel, _gameSettings));
             _gameState.AddState(new GameLoopState(_gameModel, _control, _assets, _hud));
             _gameState.AddState(new GameEndState(_gameOverScreen, _gameModel));
 
-            _gameState.SwitchToState<BootstrapState>();
+            _gameState.SwitchToState<GameLoopState>();
         }
     }
 }

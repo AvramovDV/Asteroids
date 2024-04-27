@@ -9,7 +9,6 @@ namespace Avramov.Asteroids
         {
             _hud = hud;
             _gameModel = gameModel;
-            _hud.gameObject?.SetActive(true);
         }
 
         public void Update()
@@ -18,13 +17,13 @@ namespace Avramov.Asteroids
             _hud.CoordinatesText.text = $"{_gameModel.Ship.Position}";
             _hud.AngleText.text = _gameModel.Ship.Angle.ToString();
             _hud.SpeedText.text = _gameModel.Ship.Velocity.ToString();
-            _hud.LaserStrikesText.text = $"not yet";
-            _hud.LaserReloadingText.text = $"not yet";
+            _hud.LaserStrikesText.text = _gameModel.LaserEnergy.Charges.ToString();
+            _hud.LaserReloadingText.text = _gameModel.LaserEnergy.ChargingTime.ToString("F1");
         }
 
-        public void Dispose()
+        public void SetActive(bool value)
         {
-            _hud.gameObject?.SetActive(false);
+            _hud.gameObject?.SetActive(value);
         }
     }
 }

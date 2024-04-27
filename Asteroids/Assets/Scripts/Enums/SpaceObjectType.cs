@@ -7,8 +7,7 @@ namespace Avramov.Asteroids
         Asteroid = 2,
         Meteor = 3,
         Bullet = 4,
-        Alien = 5,
-        Laser = 6
+        Alien = 5
     }
 }
 

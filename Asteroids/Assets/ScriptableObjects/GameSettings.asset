@@ -20,3 +20,4 @@ MonoBehaviour:
   <BulletSettings>k__BackingField: {fileID: 11400000, guid: c959706ae73aedf4d958f763ce3e4fe7, type: 2}
   <MeteorsSettings>k__BackingField: {fileID: 11400000, guid: ed8900176a1c7f548bb5e156186b7c04, type: 2}
   <AlienSettings>k__BackingField: {fileID: 11400000, guid: 1cd3dc346178991438499a2a501bd60d, type: 2}
+  <LaserSettings>k__BackingField: {fileID: 11400000, guid: 304af4dd2bf4fad41837d6e8d4c30956, type: 2}

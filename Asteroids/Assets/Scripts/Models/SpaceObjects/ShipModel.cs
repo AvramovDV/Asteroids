@@ -20,6 +20,8 @@ namespace Avramov.Asteroids
         public void RotateShip(float value)
         {
             float target = Angle + value * _settigns.RotationSpeed * Time.deltaTime;
+            target = target > 360 ? target - 360 : target;
+            target = target < -360 ? target + 360 : target;
             Angle = target;
         }
 

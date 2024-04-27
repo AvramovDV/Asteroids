@@ -8,8 +8,10 @@ namespace Avramov.Asteroids
 
         public MeteorModel(SpaceData space, Vector2 position = default, float angle = 0, float speed = 0) : base(space, position, angle, speed)
         {
-            CollideEvent += Destroy;
+            CollideEvent += OnCollide;
         }
+
+        private void OnCollide(SpaceObject spaceObject) => Destroy();
     }
 }
 

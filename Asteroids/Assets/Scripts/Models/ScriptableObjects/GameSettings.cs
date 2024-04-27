@@ -13,6 +13,7 @@ namespace Avramov.Asteroids
         [field: SerializeField] public BulletSettings BulletSettings { get; private set; }
         [field: SerializeField] public MeteorsSettings MeteorsSettings { get; private set;}
         [field: SerializeField] public AlienSettings AlienSettings { get; private set;}
+        [field: SerializeField] public LaserSettings LaserSettings { get; private set; }
 
         public SpaceData GetSpaceData() => new SpaceData(GameFieldWidth, GameFieldHeight);
 

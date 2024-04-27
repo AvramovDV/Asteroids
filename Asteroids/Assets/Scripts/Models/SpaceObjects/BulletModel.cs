@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Avramov.Asteroids
@@ -8,10 +6,9 @@ namespace Avramov.Asteroids
     public class BulletModel : SpaceObject
     {
         public event Action DieEvent;
+        public override SpaceObjectType SpaceObjectType => SpaceObjectType.Bullet;
 
         private float _deathTime;
-
-        public override SpaceObjectType SpaceObjectType => SpaceObjectType.Bullet;
 
         public BulletModel(SpaceData space, float lifeTime, Vector2 position = default, float angle = 0, float speed = 0) : base(space, position, angle, speed)
         {
@@ -29,7 +26,7 @@ namespace Avramov.Asteroids
             }
         }
 
-        private void OnCollide() => Destroy();
+        private void OnCollide(SpaceObject spaceObject) => Destroy();
     }
 }
 

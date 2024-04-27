@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Avramov.Asteroids
 {
@@ -24,16 +22,11 @@ namespace Avramov.Asteroids
 
         public override void UpdateState() { }
 
-        public override void EndState()
-        {
-            _gameModel.Dispose();
-            _gameOverScreen.RestartButton.onClick.RemoveListener(Restart);
-            _gameOverScreen.gameObject.SetActive(false);
-        }
+        public override void EndState() { }
 
         private void Restart()
         {
-            SwitchState<BootstrapState>();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Avramov.Asteroids
 {
-    public class SpaceObjectPresenter : IDisposable
+    public class SpaceObjectPresenter
     {
         public event Action<SpaceObjectPresenter> DestroyedEvent;
 
@@ -15,13 +15,9 @@ namespace Avramov.Asteroids
             _spaceObject = spaceObject;
             _view = UnityEngine.Object.Instantiate(view, spaceObject.Position, Quaternion.identity);
             _view.CollideEvent += OnCollide;
+            _view.DestroyEvent += OnDestroySpaceObject;
             _spaceObject.UpdateEvent += Update;
             _spaceObject.DestroyEvent += OnDestroy;
-        }
-
-        public void Dispose()
-        {
-            OnDestroy(_spaceObject);
         }
 
         private void Update()
@@ -35,12 +31,18 @@ namespace Avramov.Asteroids
             _spaceObject.Collide();
         }
 
+        private void OnDestroySpaceObject()
+        {
+            _spaceObject?.Destroy();
+        }
+
         private void OnDestroy(SpaceObject spaceObject)
         {
             if (_view == null)
                 return;
 
             _view.CollideEvent -= OnCollide;
+            _view.DestroyEvent -= OnDestroySpaceObject;
             _spaceObject.UpdateEvent -= Update;
             _spaceObject.DestroyEvent -= OnDestroy;
             DestroyedEvent?.Invoke(this);

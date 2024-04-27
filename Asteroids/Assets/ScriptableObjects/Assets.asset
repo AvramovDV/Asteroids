@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a329c2bdac5d144ab75edeea2320183, type: 3}
   m_Name: Assets
   m_EditorClassIdentifier: 
+  <LaserEffect>k__BackingField: {fileID: 3389470461346738312, guid: 314953dcc5b818c45be1fca2f409b0fc, type: 3}
   _spaceObjects:
   - <SpaceObjectType>k__BackingField: 1
     <Prefab>k__BackingField: {fileID: 8834300670988051225, guid: c26afe7360b0af245a805362fd6c999d, type: 3}

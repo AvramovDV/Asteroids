@@ -23,7 +23,7 @@ namespace Avramov.Asteroids
             Velocity = direction * _speed;
         }
 
-        private void OnCollide()
+        private void OnCollide(SpaceObject spaceObject)
         {
             Destroy();
         }

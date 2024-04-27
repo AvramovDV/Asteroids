@@ -14,6 +14,8 @@ namespace Avramov.Asteroids
             [field: SerializeField] public SpaceObjectView Prefab { get; private set; }
         }
 
+        [field: SerializeField] public GameObject LaserEffect { get; private set; }
+
         [SerializeField] private List<SpaceObjectAsset> _spaceObjects;
 
         public SpaceObjectView GetPrefab(SpaceObjectType spaceObjectType) => _spaceObjects.Find(x => x.SpaceObjectType == spaceObjectType).Prefab;

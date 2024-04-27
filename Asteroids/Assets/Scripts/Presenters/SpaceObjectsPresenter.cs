@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Avramov.Asteroids
 {
-    public class SpaceObjectsPresenter : IDisposable
+    public class SpaceObjectsPresenter
     {
         private GameModel _gameModel;
         private SpaceObjects _spaceObjects => _gameModel.SpaceObjects;
@@ -21,16 +21,6 @@ namespace Avramov.Asteroids
         public void Initialize()
         {
             _spaceObjects.SpaceObjectAddedEvent += OnAddSpaceObjcet;
-        }
-
-        public void Dispose()
-        {
-            for (int i = 0; i < _presenters.Count; i++)
-            {
-                _presenters[i].Dispose();
-            }
-
-            _spaceObjects.SpaceObjectAddedEvent -= OnAddSpaceObjcet;
         }
 
         private void OnAddSpaceObjcet(SpaceObject spaceObj)
